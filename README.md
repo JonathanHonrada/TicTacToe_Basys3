@@ -18,3 +18,6 @@ is also a reset button, which is the top button on the Basys3. When asserted, th
 //win indication
 
 //possible changes or features
+
+Architecture
+--------------
