@@ -1,17 +1,5 @@
-//----------------------------------------------------------------------------------
-//-- Module Name:    BC_DEC
-//-- Description: Special 7-segment display driver (4-letter words only)
-//--
-//--  One Input:  Z
-//--
-//--      Z = '1': COOL
-//--      Z = '0': CrAP 
-//-- J. Callenes
-//--------------------------------------------------------------------------------
-
-
 //-------------------------------------------------------------
-//-- Two word seven-segment display driver. Outputs are active
+//-- Tic Tac Toe segment display driver. Outputs are active
 //-- low and configured ABCEDFG in "segment" output. 
 //--------------------------------------------------------------
 module BC_DEC(    input CLK,
