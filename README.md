@@ -1,11 +1,9 @@
 # TicTacToe_Basys3
-### Creators: Jonathan Honrada, Rocio Sanchez, Jared Rocha
----------------
+#### Creators: Jonathan Honrada, Rocio Sanchez, Jared Rocha
 Brief Description
 ---------------
 This is a Tic Tac Toe game meant to be implemented on a Basys3 FPGA. All files are coded in Verilog and a constraints file is provided.
 
----------------
 Functionality
 ---------------
 This game of Tic Tac Toe has 6 input switches and two button inputs. The three left-most swithches represent the x-axis of the 
