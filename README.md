@@ -1,5 +1,5 @@
 # TicTacToe_Basys3
-## Creators: Jonathan Honrada, Rocio Sanchez, Jared Rocha
+### Creators: Jonathan Honrada, Rocio Sanchez, Jared Rocha
 ---------------
 Brief Description
 ---------------
