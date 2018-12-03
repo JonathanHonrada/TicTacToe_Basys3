@@ -8,7 +8,8 @@ Requirements
 ---------------
 - Basys3 Board with USB Cable
 - Digilent Pmod Keypad (2x6 pin) 
-![alt text](https://reference.digilentinc.com/_media/reference/pmod/pmodkypd/pmodkypd-0.png)
+
+![alt text](https://instructure-uploads-2.s3.amazonaws.com/account_20000000000009/attachments/59084640/Basys3_PmodKYPD.jpg?response-content-disposition=attachment%3B%20filename%3D%22Basys3_PmodKYPD.jpg%22%3B%20filename%2A%3DUTF-8%27%27Basys3%255FPmodKYPD.jpg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJDW777BLV26JM2MQ%2F20181203%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20181203T181741Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=f31cf70a7ad3f50690393487f03a6280c0a87bed23b8c8a00bd72b9151d1e1fe)
 
 Functionality
 ---------------
