@@ -9,7 +9,7 @@ Requirements
 - Basys3 Board with USB Cable
 - Digilent Pmod Keypad (2x6 pin) 
 
-![alt text](https://raw.githubusercontent.com/JonathanHonrada/TicTacToe_Basys3/master/Basys3_PmodKYPD.jpg | width=100)
+![](https://raw.githubusercontent.com/JonathanHonrada/TicTacToe_Basys3/master/Basys3_PmodKYPD.jpg | width=200)
 
 Functionality
 ---------------
@@ -21,4 +21,4 @@ When a win is detected by either Player 1 or Player 2 executing a winning move (
 
 Architecture
 --------------
-![alt text](https://raw.githubusercontent.com/JonathanHonrada/TicTacToe_Basys3/master/elaborated_design.png)
+![](https://raw.githubusercontent.com/JonathanHonrada/TicTacToe_Basys3/master/elaborated_design.png)
