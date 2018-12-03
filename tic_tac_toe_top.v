@@ -21,27 +21,34 @@
 
 
 module tic_tac_toe_top(
-    input [2:0] x,
-    input [2:0] y,
+   // input [4:1] x,
+ //   input [4:1] y,
     input reset,
     input clk,
    // input player,
-    input submit,
+   // input submit,
     output [3:0] DISP_EN,
-    output [7:0] SEGMENTS
+    output [7:0] SEGMENTS,
+    output [4:1] COL,
+    input [4:1] ROW
     );
 wire [3:0] zz;
 wire pp;
 wire last_player;
-
+//wire [4:1]col;
+/*keypad_driver keypad_driver(
+.clk(clk),
+.COL(col)
+);*/
+//assign COL = col;
 submission submit_move(
 .last_player(last_player),
 .reset(reset),
-.x(x),
-.y(y),
+.x(COL),
+.y(ROW),
 .clk(clk),
 //.player(player),
-.s(submit),
+//.s(submit),
 .player_out(pp),
 .z(zz)
 );

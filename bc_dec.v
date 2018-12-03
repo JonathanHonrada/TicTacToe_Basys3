@@ -1,5 +1,17 @@
+//----------------------------------------------------------------------------------
+//-- Module Name:    BC_DEC
+//-- Description: Special 7-segment display driver (4-letter words only)
+//--
+//--  One Input:  Z
+//--
+//--      Z = '1': COOL
+//--      Z = '0': CrAP 
+//-- J. Callenes
+//--------------------------------------------------------------------------------
+
+
 //-------------------------------------------------------------
-//-- Tic Tac Toe segment display driver. Outputs are active
+//-- Two word seven-segment display driver. Outputs are active
 //-- low and configured ABCEDFG in "segment" output. 
 //--------------------------------------------------------------
 module BC_DEC(    input CLK,
@@ -29,6 +41,19 @@ module BC_DEC(    input CLK,
          cnt_dig <= cnt_dig + 1;
    end 
 
+//   -- select the display sseg data abcdefg (active low) -----
+   /*assign SEGMENTS = 
+                     (digit==0)? 8'b00100101 :  //2
+                     (digit==1)? 8'b01111111 :  //top player 1
+                     (digit==2)? 8'b11111101 :  //middle player 1
+                     (digit==3)? 8'b11101111 :  //bottom player 1
+                     (digit==4)? {disp_clk,7'b1111111} :  //top player 2
+                     (digit==5)? {6'b111111,disp_clk,1'b1} :  //middle player 2
+                     (digit==6)? {3'b111,disp_clk,4'b1111} :  //bottom player 2
+                     (digit==7)? 8'b10011111: // 1
+                     (digit==8)? 8'b11111111:
+                     8'b11111111;*/
+
 //   -- actuate the correct display --------------------------
    assign DISP_EN = (cnt_dig==0)? 4'b1110: 
                     (cnt_dig==1)? 4'b1101:
@@ -51,7 +76,7 @@ module BC_DEC(    input CLK,
 
         2:begin//controls game display for the middle-left seven segment display
          case (pos3)
-	    0:seg[4] <= 1;
+            0:seg[4] <= 1;
             1:seg[4] <= 0;
             2:seg[4] <= disp_clk;
             default: seg[4] <= 1;

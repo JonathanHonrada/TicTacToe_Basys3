@@ -129,6 +129,10 @@ always@(posedge clk)
             pos_reg = 18'b000000000000000000;
 		last_play = 1'b1;
           end
+      else
+        begin
+        pos_reg <= pos_reg;
+        end
     end
 
 assign pos1 = pos_reg[1:0]; //assign position registers to their specific output which will be translated to positions on the SSD
