@@ -20,6 +20,7 @@ The game automatically switches from Player 1 to Player 2 after Player 1 makes a
 When a win is detected by either Player 1 or Player 2 executing a winning move (3 horizontal possibilities, 3 vertical posibilities, or 2 diagonal posibilities), the game is over. This is indicated by the winning player's number being displayed on all the anode sections of the seven segment display. The game can be reset to a new game by using the reset button which is mapped to the upper D-pad key on the Basys 3.
 
 Please click on the picture below for a video demonstration!!
+
 [![Youtube Video: Tic Tac Toe on Basys 3](https://i.ytimg.com/vi/3Zp5S_m8s-U/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBg3-e8QM3Py1Z66wh6rr2dO1FEpA)](https://www.youtube.com/watch?v=3Zp5S_m8s-U)
 
 Architecture
