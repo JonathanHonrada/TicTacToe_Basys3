@@ -9,7 +9,7 @@ Requirements
 - Basys3 Board with USB Cable
 - Digilent Pmod Keypad (2x6 pin) 
 
-![](https://raw.githubusercontent.com/JonathanHonrada/TicTacToe_Basys3/master/Basys3_PmodKYPD.jpg | width=200)
+![](https://raw.githubusercontent.com/JonathanHonrada/TicTacToe_Basys3/master/Basys3_PmodKYPD.jpg)
 
 Functionality
 ---------------
