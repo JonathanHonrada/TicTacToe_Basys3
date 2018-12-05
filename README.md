@@ -10,6 +10,7 @@ Requirements
 - Digilent Pmod Keypad (2x6 pin) 
 
 ![Picture:Keypad and Basys 3](https://raw.githubusercontent.com/JonathanHonrada/TicTacToe_Basys3/master/Basys3_PmodKYPD.jpg)
+(image brought to you by someone on the internet)
 
 Functionality
 ---------------
