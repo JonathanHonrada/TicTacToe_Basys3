@@ -26,3 +26,8 @@ Please click on the picture below for a video demonstration!!
 Architecture
 --------------
 ![Picture:Elaborated Design](https://raw.githubusercontent.com/JonathanHonrada/TicTacToe_Basys3/master/elaborated_design.png)
+
+Future Implementations
+----------------
+At the moment we are considering several future implementations or features that we may add or you can add to this project. The first of these is an auto reset that resets the game once a win or a tie has been connected. The master reset button would still function alongside this feature. To implement this, we would need to wire a second-based counter to our win detector finite state machine that would begin a count for say, 4 or 5 seconds, and then assert a reset signal which would also inherently set the win signal back to zero (no winner/game being played - state).
+
