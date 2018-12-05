@@ -25,14 +25,28 @@ Please click on the picture below for a video demonstration!!
 
 Architecture
 --------------
+"submit move module" -- has an fsm which drives keypad(col output), reads from keypad(encoding), switches players after turn is done,reset input which submits a special move "0000" that clears the 18-bit game register;
+
+"game controller module" -- decodes output from submit move module into positions on the board stored in 18-bit register, tells the submit move module which player made the last move allowing it to conduct the player-switch function,
+
+"win detector module" -- constantly reading the 18-bit game register on the clock edge, if a win is detected for player 1 outputs "01" to sseg module, if a win is detected for player 2 outputs "10" to game module, default output of "00" means no win detected
+
+"sseg disp" -- drives the segment display at like 4500 Hz i think to allow display multiplexing (super cool), displays current game on leftmost seven segments, solid bar = pl 1, flashing bar = pl 2 ONLY while win == "00", if win == "01" or "10" it'll display that number on all segments instead
+
 ![Picture:Elaborated Design](https://raw.githubusercontent.com/JonathanHonrada/TicTacToe_Basys3/master/elaborated_design.png)
 
-It's worthwhile to describe the operational characteristics of the Pmod Keypad since it's an external device which is necessary to implement this game properly. 
+It's worthwhile to describe the operational characteristics of the Pmod Keypad since it's an external device which is necessary to implement this game properly.
+
 --pull up resistors maintain logic level high on rows
+
 --fsm drives indivudal columns to low
+
 --push button act as closed switches when asserted
+
 --detect row AND col as logic level low then it is read as a button press
+
 --clockedge syncronization
+
 --inferred latches or synthesis removal blah blah of unused of col/rows
 
 tl;dr read the datasheet
