@@ -26,7 +26,7 @@ Please click on the picture below for a video demonstration!!
 
 Architecture
 --------------
-Looking at the Black Box Diagrams, we can see that there are is a 4-bit input from the keypad rows and a 4-bit output to the keypad columns. These are signals are both read in our circuit to determine which move is currently being played or in short, they detect a button press for specific keys. The column outputs are used to drive the keypad and this function will be explained later on. There is also a reset input which is used to clear the game board. And there is a 4-bit output DISP_EN which drives the anodes on the seven segment display and a 8-bit output SEGMENTS which drives the segments on the seven segment display. And lastly there is a clock input which is used to synchronize various modules of our circuit.
+Looking at the black box diagram, we can see that there are is a 4-bit input from the keypad rows and a 4-bit output to the keypad columns. These are signals are both read in our circuit to determine which move is currently being played or in short, they detect a button press for specific keys. The column outputs are used to drive the keypad and this function will be explained later on. There is also a reset input which is used to clear the game board. And there is a 4-bit output DISP_EN which drives the anodes on the seven segment display and a 8-bit output SEGMENTS which drives the segments on the seven segment display. And lastly there is a clock input which is used to synchronize various modules of our circuit.
 
 "submit move module" -- has an fsm which drives keypad(col output), reads from keypad(encoding), switches players after turn is done,reset input which submits a special move "0000" that clears the 18-bit game register;
 
