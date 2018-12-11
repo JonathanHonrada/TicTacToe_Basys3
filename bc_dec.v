@@ -1,11 +1,6 @@
 //----------------------------------------------------------------------------------
 //-- Module Name:    BC_DEC
 //-- Description: Special 7-segment display driver (4-letter words only)
-//--
-//--  One Input:  Z
-//--
-//--      Z = '1': COOL
-//--      Z = '0': CrAP 
 //-- J. Callenes
 //--------------------------------------------------------------------------------
 
@@ -29,7 +24,7 @@ module BC_DEC(    input CLK,
    wire   sclk;
    wire disp_clk; 
 
-   clk_div my_clk(.clk(CLK),
+   clk_div my_clk(.clk(CLK), //calling specific clock divider modules
                   .sclk(sclk));
                    
    clk_div2 clock_for_display(.clk(CLK),
@@ -40,20 +35,7 @@ module BC_DEC(    input CLK,
    begin
          cnt_dig <= cnt_dig + 1;
    end 
-
-//   -- select the display sseg data abcdefg (active low) -----
-   /*assign SEGMENTS = 
-                     (digit==0)? 8'b00100101 :  //2
-                     (digit==1)? 8'b01111111 :  //top player 1
-                     (digit==2)? 8'b11111101 :  //middle player 1
-                     (digit==3)? 8'b11101111 :  //bottom player 1
-                     (digit==4)? {disp_clk,7'b1111111} :  //top player 2
-                     (digit==5)? {6'b111111,disp_clk,1'b1} :  //middle player 2
-                     (digit==6)? {3'b111,disp_clk,4'b1111} :  //bottom player 2
-                     (digit==7)? 8'b10011111: // 1
-                     (digit==8)? 8'b11111111:
-                     8'b11111111;*/
-
+   
 //   -- actuate the correct display --------------------------
    assign DISP_EN = (cnt_dig==0)? 4'b1110: 
                     (cnt_dig==1)? 4'b1101:
@@ -144,10 +126,10 @@ module BC_DEC(    input CLK,
     else if(win == 1)// win signal of 1 indicates player 1 wins, displays 1 on all seven segment displays
         begin
         case(cnt_dig)
-           1:seg <= 8'b10011111;
-           2:seg <= 8'b10011111;
-           3:seg <= 8'b10011111;
-           0:seg <= 8'b10011111;
+           1:seg <= {1'b1,disp_clk,disp_clk,5'b11111};
+           2:seg <= {1'b1,disp_clk,disp_clk,5'b11111};
+           3:seg <= {1'b1,disp_clk,disp_clk,5'b11111};
+           0:seg <= {1'b1,disp_clk,disp_clk,5'b11111};
            default: seg <= 8'b11111111;
         endcase
         end 
@@ -155,13 +137,23 @@ module BC_DEC(    input CLK,
     else if(win == 2)// win signal of 2 indicates player 2 wins, displays 2 on all seven segment displays
          begin
          case(cnt_dig)
-            1:seg <= 8'b00100101;
-            2:seg <= 8'b00100101;
-            3:seg <= 8'b00100101;
-            0:seg <= 8'b00100101;
+            1:seg <= {disp_clk,disp_clk,1'b1,disp_clk,disp_clk,1'b1,disp_clk,1'b1};
+            2:seg <= {disp_clk,disp_clk,1'b1,disp_clk,disp_clk,1'b1,disp_clk,1'b1};
+            3:seg <= {disp_clk,disp_clk,1'b1,disp_clk,disp_clk,1'b1,disp_clk,1'b1};
+            0:seg <= {disp_clk,disp_clk,1'b1,disp_clk,disp_clk,1'b1,disp_clk,1'b1};
             default: seg <= 8'b11111111;
           endcase
-          end 
+          end
+    else if(win == 3)// a tie
+        begin
+         case(cnt_dig)
+            1:seg <= 8'b01100001;
+            2:seg <= 8'b11111111;
+            3:seg <= 8'b11100001;
+            0:seg <= 8'b10011111;
+            default: seg <= 8'b11111111;
+          endcase
+          end
     end 
  
 assign SEGMENTS = seg;

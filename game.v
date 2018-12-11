@@ -37,99 +37,99 @@ always@(posedge clk)
     if(move == 5'b00001 && pos_reg[1:0] == 2'b00) //translation and storing of moves into registers, will not overwrite space if player 2 already owns it
         begin
         pos_reg[1:0] = 2'b01; //pos1 <= player1
-	last_play = 1'b0;
+	    last_play = 1'b0;
         end
     else if(move == 5'b00010 && pos_reg[3:2] == 2'b00)
         begin
         pos_reg[3:2] = 2'b01; //pos2 <= player1
-	last_play = 1'b0;
+	    last_play = 1'b0;
         end
     else if(move == 5'b00011 && pos_reg[5:4] == 2'b00)
         begin
         pos_reg[5:4] = 2'b01; //pos3 <= player1
-	last_play = 1'b0;
+	    last_play = 1'b0;
         end
     else if(move == 5'b00100 && pos_reg[7:6] == 2'b00)
         begin
         pos_reg[7:6] = 2'b01; //pos4 <= player1
-	last_play = 1'b0;
+	    last_play = 1'b0;
         end
     else if(move == 5'b00101 && pos_reg[9:8] == 2'b00)
         begin
         pos_reg[9:8] = 2'b01; //pos5 <= player1
-	last_play = 1'b0;
+	    last_play = 1'b0;
         end
     else if(move == 5'b00110 && pos_reg[11:10] == 2'b00)
         begin
         pos_reg[11:10] = 2'b01; //pos6 <= player1
-	last_play = 1'b0;
+	    last_play = 1'b0;
         end
     else if(move == 5'b00111 && pos_reg[13:12] == 2'b00)
          begin
          pos_reg[13:12] = 2'b01; //pos7 <= player1
-	 last_play = 1'b0;
+	     last_play = 1'b0;
          end
     else if(move == 5'b01000 && pos_reg[15:14] == 2'b00)
          begin
          pos_reg[15:14] = 2'b01; //pos8 <= player1
-	last_play = 1'b0;
+	     last_play = 1'b0;
          end
-     else if(move == 5'b01001 && pos_reg[17:16] == 2'b00)
+    else if(move == 5'b01001 && pos_reg[17:16] == 2'b00)
          begin
          pos_reg[17:16] = 2'b01; //pos9 <= player1
-	last_play = 1'b0;
+	     last_play = 1'b0;
          end
-     else if(move == 5'b10001 && pos_reg[1:0] == 2'b00) 
+    else if(move == 5'b10001 && pos_reg[1:0] == 2'b00) 
          begin
          pos_reg[1:0] = 2'b10; //pos1 <= player2
-	last_play = 1'b1;
+	     last_play = 1'b1;
          end
-     else if(move == 5'b10010 && pos_reg[3:2] == 2'b00)
+    else if(move == 5'b10010 && pos_reg[3:2] == 2'b00)
          begin
          pos_reg[3:2] = 2'b10; //pos2 <= player2
-	last_play = 1'b1;
+	     last_play = 1'b1;
          end
-     else if(move == 5'b10011 && pos_reg[5:4] == 2'b00)
+    else if(move == 5'b10011 && pos_reg[5:4] == 2'b00)
          begin
          pos_reg[5:4] = 2'b10; //pos3 <= player2
-	last_play = 1'b1;
+	     last_play = 1'b1;
          end
-     else if(move == 5'b10100 && pos_reg[7:6] == 2'b00)
+    else if(move == 5'b10100 && pos_reg[7:6] == 2'b00)
          begin
          pos_reg[7:6] = 2'b10; //pos4 <= player2
-	last_play = 1'b1;
+	     last_play = 1'b1;
          end
-     else if(move == 5'b10101 && pos_reg[9:8] == 2'b00)
+    else if(move == 5'b10101 && pos_reg[9:8] == 2'b00)
          begin
          pos_reg[9:8] = 2'b10; //pos5 <= player2
-	last_play = 1'b1;
+	     last_play = 1'b1;
          end
-     else if(move == 5'b10110 && pos_reg[11:10] == 2'b00)
+    else if(move == 5'b10110 && pos_reg[11:10] == 2'b00)
          begin
          pos_reg[11:10] = 2'b10; //pos6 <= player2
-	last_play = 1'b1;
+	     last_play = 1'b1;
          end
-     else if(move == 5'b10111 && pos_reg[13:12] == 2'b00)
+    else if(move == 5'b10111 && pos_reg[13:12] == 2'b00)
           begin
           pos_reg[13:12] = 2'b10; //pos7 <= player2
-	last_play = 1'b1;
+	      last_play = 1'b1;
           end
-     else if(move == 5'b11000 && pos_reg[15:14] == 2'b00)
+    else if(move == 5'b11000 && pos_reg[15:14] == 2'b00)
           begin
           pos_reg[15:14] = 2'b10; //pos8 <= player2
-	last_play = 1'b1;
+	      last_play = 1'b1;
           end
-      else if(move == 5'b11001 && pos_reg[17:16] == 2'b00)
-	  begin
+    else if(move == 5'b11001 && pos_reg[17:16] == 2'b00)
+	      begin
           pos_reg[17:16] = 2'b10; //pos9 <= player2
-	last_play = 1'b1;
+	      last_play = 1'b1;
           end
-      else if (move == 5'b10000 || move == 5'b00000) //if reset signal is received, clears all spaces by setting them to zero
+    else if (move == 5'b10000 || move == 5'b00000) //if reset signal is received, clears all spaces by setting them to zero
           begin
-            pos_reg = 18'b000000000000000000;
-		last_play = 1'b1;
+          pos_reg = 18'b000000000000000000;
+		  last_play = 1'b1;
           end
-      else
+    else
         begin
         pos_reg <= pos_reg;
         end
@@ -145,36 +145,5 @@ assign pos7 = pos_reg[13:12];
 assign pos8 = pos_reg[15:14];
 assign pos9 = pos_reg[17:16];
 assign last_player = last_play;
-/*
-always@(*)
-begin
-if(pos1 == 2'b01 && pos2 == 2'b01 && pos3 == 2'b01 ||
-    pos4 == 2'b01 && pos5 == 2'b01 && pos6 == 2'b01 ||
-    pos7 == 2'b01 && pos8 == 2'b01 && pos9 == 2'b01 ||
-    pos1 == 2'b01 && pos5 == 2'b01 && pos9 == 2'b01 ||
-    pos7 == 2'b01 && pos5 == 2'b01 && pos3 == 2'b01 ||
-    pos1 == 2'b01 && pos4 == 2'b01 && pos7 == 2'b01 ||
-    pos2 == 2'b01 && pos5 == 2'b01 && pos8 == 2'b01 ||
-    pos3 == 2'b01 && pos6 == 2'b01 && pos9 == 2'b01)
-    begin
-	win_signal = 2'b01;
-    end
-else if(pos1 == 2'b10 && pos2 == 2'b10 && pos3 == 2'b10 ||
-        pos4 == 2'b10 && pos5 == 2'b10 && pos6 == 2'b10 ||
-        pos7 == 2'b10 && pos8 == 2'b10 && pos9 == 2'b10 ||
-        pos1 == 2'b10 && pos5 == 2'b10 && pos9 == 2'b10 ||
-        pos7 == 2'b10 && pos5 == 2'b10 && pos3 == 2'b10 ||
-        pos1 == 2'b10 && pos4 == 2'b10 && pos7 == 2'b10 ||
-        pos2 == 2'b10 && pos5 == 2'b10 && pos8 == 2'b10 ||
-        pos3 == 2'b10 && pos6 == 2'b10 && pos9 == 2'b10)
-        begin
-            win_signal = 2'b10;
-        end
- else
-    begin
-    win_signal = 2'b00;
-    end
-end
-assign win = win_signal;
-*/    
+  
 endmodule

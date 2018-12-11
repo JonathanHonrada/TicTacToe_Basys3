@@ -21,13 +21,12 @@
 
 
 module submission(
-   // input player, //represented by a switch, off refers to player1, on refers to player2
-    input last_player,
-    output [4:1] x,//x-coordinate input represented by 3 switch inputs, receives decoder like inputs (ex. x = 100 refers to the third x column, x = 001 refers to the first column) 
-    input [4:1] y,//y -coordinate input represented by 3 switch inputs,
+    input last_player, // last player who made a move
+    output [4:1] x,// columns, signal is an output because we are driving them individually
+    input [4:1] y,// rows
     input reset, //resets the game
+    input reset2, // auto reset signal from the win detector fsm
     output player_out,//outputs the player who's move is being submitted
-  //  input s,//a submit button
     input clk,//clock input
     output [3:0] z//output which is used to determine the position on the board being occupied in the next module
     );
@@ -160,7 +159,7 @@ begin
          Z = 4'b1111;
          end
    end
-   if (reset == 1)
+   if (reset == 1 || reset2 == 1)
       begin
          Z = 4'b0000;
    end            
