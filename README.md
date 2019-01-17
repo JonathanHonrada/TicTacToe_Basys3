@@ -28,17 +28,17 @@ Architecture
 --------------
 Looking at the black box diagram, we can see that there are is a 4-bit input from the keypad rows and a 4-bit output to the keypad columns. These are signals are both read in our circuit to determine which move is currently being played or in short, they detect a button press for specific keys. The column outputs are used to drive the keypad and this function will be explained later on. There is also a reset input which is used to clear the game board. And there is a 4-bit output DISP_EN which drives the anodes on the seven segment display and a 8-bit output SEGMENTS which drives the segments on the seven segment display. And lastly there is a clock input which is used to synchronize various modules of our circuit.
 
-### "Submit Move" Module ### 
-has an fsm which drives keypad(col output), reads from keypad(encoding), switches players after turn is done,reset input which submits a special move "0000" that clears the 18-bit game register;
+### Submit Move Module ### 
+The first step is creating a module to receive submitted moves. On our schematic, this is the "submit_move" module on the bottom right. This module contains the keypad driver FSM we described in the last step. This module also contains a section dedicated to reading moves while simultaneously submitting read moves to the next module. Again the reading of moves is done by detecting when a column and row on the keypad have both been driven to logic level low. This module also automatically switches between players via the use of a "last_player" signal which indicates the last player who made a move. This signal is generated in the next module.
 
-### "Game Controller" Module ###
-decodes output from submit move module into positions on the board stored in 18-bit register, tells the submit move module which player made the last move allowing it to conduct the player-switch function,
+### Game Controller Module ###
+The next module is the "game_controller" which receives moves from the "submit_move" module. And although this module is called the "game_controller", the "win_detector" module also controls part of the game, this is just the name we gave it at the beginning and it stuck. Anyways, this module stores the current moves played in an 18-bit register (2 bits for every space on the 3x3 gameboard). A state of '00' for a space means that it is unoccupied. A state of '01' means that player 1 is occupying that space. A state of '10' means that player 2 is occupying that space. This module also does not allow moves to be over written. The reset signal is also received here as a special input move from the "submit_move" module. If this signal is received, it sets all spaces registers back to '00', starting a new game. When moves are stored in the 18-bit register, they are simultaneously being read by our "win_detector" module and our "seven_segment_display" module.
 
-### "Win Detector" module" ### 
-constantly reading the 18-bit game register on the clock edge, if a win is detected for player 1 outputs "01" to sseg module, if a win is detected for player 2 outputs "10" to game module, default output of "00" means no win detected
+### Win Detector Module ### 
+The "win_detector" controls the current state of the game by reading the current moves played that are stored in the 18 bit register. If no win has been detected, a two-bit signal '00' is sent to the display module which tells it to continue displaying the game. If a win for player one is detected, a signal '01' is sent to the display module, telling it to display a flashing 1 on all anode sections of the display. If a win for player two is detected, a signal '10' is sent to the display module, telling it to display a flashing 2 on all anode sections of the display. If a tie is detected (all spaces occupied but no winner detected), a signal '11' is sent to the display module telling it to display the words tie. After a tie or win is detected, a signal is sent to a counter that counts for 4 seconds before sending a signal that auto-resets the game.
 
-### "SSEG DISP" ###
-drives the segment display at like 4500 Hz i think to allow display multiplexing (super cool), displays current game on leftmost seven segments, solid bar = pl 1, flashing bar = pl 2 ONLY while win == "00", if win == "01" or "10" it'll display that number on all segments instead
+### Seven Segment Display Module ###
+The last module is the "seven_segment_module" which was borrowed from Professer Joseph Callenes-Sloan. This display is a multiplexed display which cycles through a set of segment bits at a very fast rate, allowing the viewer to perceive a constant gameboard. The outputs of this module, "SEGMENTS[7:0]" (cathodes) and "DISP_EN[3:0]" (anodes) are used to drive the seven segment display. The game also receives an inverted "last_player" input to display the current player making the move.
 
 ![Picture:Elaborated Design](https://raw.githubusercontent.com/JonathanHonrada/TicTacToe_Basys3/master/elaborated_design.png)
 
