@@ -40,19 +40,8 @@ Looking at the black box diagram, we can see that there are is a 4-bit input fro
 
 It's worthwhile to describe the operational characteristics of the Pmod Keypad since it's an external device which is necessary to implement this game properly.
 
---pull up resistors maintain logic level high on rows
+An FSM is used to sequentially drive each column to a low logic level while a high logic level is maintained on the remaining columns. This happense sequentially from left to right and wraps around when it reaches the rightmost column. When a button is pressed, a switch is closed and the row at which the button is located is subsequently driven to a low logic level. The input module of this circuit then reads when both a column and row are at logic level low to determine which button is currently being pressed. This sequencing of the keypad is not done syncronously with the main driving clock of the circuit. This design choice was made by because doing so resulted in the FSM failing to properly read button presses. Coming back to it now (a month and a half later), I realize this was probably due to some timing issue, but if you wish to use this driving FSM feel free to mess around with the clock divider and find an optimal value to drive the keypad.
 
---fsm drives indivudal columns to low
-
---push button act as closed switches when asserted
-
---detect row AND col as logic level low then it is read as a button press
-
---clockedge syncronization
-
---inferred latches or synthesis removal blah blah of unused of col/rows
-
-tl;dr read the datasheet
 ![Picture:Keypad Module](https://i.imgur.com/PWv8lRb.png)
 
 Future Implementations
