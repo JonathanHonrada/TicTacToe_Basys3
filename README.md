@@ -52,3 +52,6 @@ Future Implementations
 ----------------
 At the moment we are considering several future implementations or features that we may add or you can add to this project. The first of these is an auto reset that resets the game once a win or a tie has been connected. The master reset button would still function alongside this feature. To implement this, we would need to wire a second-based counter to our win detector finite state machine that would begin a count for say, 4 or 5 seconds, and then assert a reset signal which would also inherently set the win signal back to zero (no winner/game being played - state).
 
+Acknowledgments and Other Thoughts
+----------------------------
+The code for the Clock Divider and Seven Segment Display Driver were borrowed from Professor Joseph Callenes-Sloan at Cal Poly SLO. We also took inspiration from the design [these fellas](https://www.youtube.com/watch?v=Il5ZAfsUkPk) created, although our design was mostly original aside from the seven segment display driver. Please feel free to try and implement this on your own and make your own modifications.
