@@ -1,7 +1,7 @@
-# TicTacToe_Basys3
-#### Creators: Jonathan Honrada, Rocio Sanchez, Jared Rocha
+# TicTacToe_Basys3 #
+##### Creators: Jonathan Honrada, Rocio Sanchez, Jared Rocha #####
 Brief Description
----------------
+-----------------
 This is a Tic Tac Toe game meant to be implemented on a Basys3 FPGA. All files are coded in Verilog and a constraints file is provided.
 
 Requirements
@@ -28,13 +28,17 @@ Architecture
 --------------
 Looking at the black box diagram, we can see that there are is a 4-bit input from the keypad rows and a 4-bit output to the keypad columns. These are signals are both read in our circuit to determine which move is currently being played or in short, they detect a button press for specific keys. The column outputs are used to drive the keypad and this function will be explained later on. There is also a reset input which is used to clear the game board. And there is a 4-bit output DISP_EN which drives the anodes on the seven segment display and a 8-bit output SEGMENTS which drives the segments on the seven segment display. And lastly there is a clock input which is used to synchronize various modules of our circuit.
 
-"submit move module" -- has an fsm which drives keypad(col output), reads from keypad(encoding), switches players after turn is done,reset input which submits a special move "0000" that clears the 18-bit game register;
+### "Submit Move" Module ### 
+has an fsm which drives keypad(col output), reads from keypad(encoding), switches players after turn is done,reset input which submits a special move "0000" that clears the 18-bit game register;
 
-"game controller module" -- decodes output from submit move module into positions on the board stored in 18-bit register, tells the submit move module which player made the last move allowing it to conduct the player-switch function,
+### "Game Controller" Module ###
+decodes output from submit move module into positions on the board stored in 18-bit register, tells the submit move module which player made the last move allowing it to conduct the player-switch function,
 
-"win detector module" -- constantly reading the 18-bit game register on the clock edge, if a win is detected for player 1 outputs "01" to sseg module, if a win is detected for player 2 outputs "10" to game module, default output of "00" means no win detected
+### "Win Detector" module" ### 
+constantly reading the 18-bit game register on the clock edge, if a win is detected for player 1 outputs "01" to sseg module, if a win is detected for player 2 outputs "10" to game module, default output of "00" means no win detected
 
-"sseg disp" -- drives the segment display at like 4500 Hz i think to allow display multiplexing (super cool), displays current game on leftmost seven segments, solid bar = pl 1, flashing bar = pl 2 ONLY while win == "00", if win == "01" or "10" it'll display that number on all segments instead
+### "SSEG DISP" ###
+drives the segment display at like 4500 Hz i think to allow display multiplexing (super cool), displays current game on leftmost seven segments, solid bar = pl 1, flashing bar = pl 2 ONLY while win == "00", if win == "01" or "10" it'll display that number on all segments instead
 
 ![Picture:Elaborated Design](https://raw.githubusercontent.com/JonathanHonrada/TicTacToe_Basys3/master/elaborated_design.png)
 
